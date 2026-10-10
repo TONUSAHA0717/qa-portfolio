@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "QA Portfolio - JSONPlaceholder API Demo",
+    "description": "Portfolio demo collection using the public JSONPlaceholder API; not a production service.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET - Retrieve Post 1",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/1",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "1"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Response is JSON', function () { pm.response.to.be.json; });",
+              "pm.test('Expected fields exist', function () { const b = pm.response.json(); ['userId','id','title','body'].forEach(k => pm.expect(b).to.have.property(k)); });",
+              "pm.test('Post ID is 1', function () { pm.expect(pm.response.json().id).to.eql(1); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET - Observe missing post behavior",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/999999",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "999999"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Capture response code for analysis', function () { pm.expect(pm.response.code).to.be.a('number'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "POST - Create demo post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"QA portfolio sample\",\n  \"body\": \"Demo post for API test practice\",\n  \"userId\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 201', function () { pm.response.to.have.status(201); });",
+              "pm.test('Response echoes submitted values', function () { const b = pm.response.json(); pm.expect(b.title).to.eql('QA portfolio sample'); pm.expect(b.userId).to.eql(1); });"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

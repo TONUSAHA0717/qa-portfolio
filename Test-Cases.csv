@@ -1,0 +1,11 @@
+Test Case ID,Module,Scenario,Preconditions,Steps,Test Data,Expected Result,Priority,Execution Status
+ECOM-TC-001,Login,Login with valid credentials,Registered demo user exists,"Open login; enter valid credentials; click Login",Valid demo credentials,User is authenticated and redirected,High,Not Run
+ECOM-TC-002,Login,Login with incorrect password,Registered demo user exists,"Open login; enter wrong password; click Login",Incorrect password,Clear error appears and user is not authenticated,High,Not Run
+ECOM-TC-003,Login,Submit empty login form,Login page is open,"Leave fields blank; click Login",Blank fields,Required-field validation appears,High,Not Run
+ECOM-TC-004,Search,Search for existing product,Catalogue has matching item,"Search known product term",Known keyword,Relevant products are displayed,Medium,Not Run
+ECOM-TC-005,Search,Search with no matching result,Catalogue is available,"Search unique unmatched term",No-match keyword,Useful empty-state message appears,Medium,Not Run
+ECOM-TC-006,Cart,Add product to cart,Product page is available,"Open product; click Add to Cart",Available product,Cart reflects added item,High,Not Run
+ECOM-TC-007,Cart,Remove product from cart,Cart contains item,"Open cart; remove item",Existing cart item,Item is removed and totals recalculate,High,Not Run
+ECOM-TC-008,Checkout,Submit checkout with missing fields,Checkout page is available,"Leave required fields blank; submit",Blank fields,Validation appears and order is not submitted,High,Not Run
+ECOM-TC-009,Checkout,Validate order total,Known product and quantity available,"Add product; change quantity; compare totals",Known price and quantity,Totals follow documented business rules,High,Not Run
+ECOM-TC-010,Regression,Cart persists after navigation,Cart contains item,"Add item; navigate away; return to cart",Existing item,Persistence follows documented behavior,Medium,Not Run
