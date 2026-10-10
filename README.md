@@ -24,8 +24,8 @@ A fictional e-commerce application with login, search, cart, and checkout workfl
 
 ## Contact
 - LinkedIn: https://linkedin.com/in/tonulika-saha-748086225
-- Email: [Add your professional email]
-- GitHub: [Add your GitHub profile URL]
+- Email: tonulika.saha@gmail.com
+- GitHub: https://github.com/TONUSAHA0717
 
 ## Next steps
 Run the samples in an authorized demo environment, attach real screenshots/reports, and update results based on actual execution.
